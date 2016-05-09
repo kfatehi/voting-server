@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
     "test:watch": "npm run test -- --watch",
-    "tdd": "tmuxtdd run --watch 'src/**/*.js,test/**/*.js' --cmd 'npm test'"
+    "tdd": "tmuxtdd run --watch={src,test}/**/*.js --cmd='npm test' --fmt='tests S{#[bg=yellow]ON,#[bg=green]OK,#[bg=red]FAIL}'",
+    "dev": " tmuxtdd run --watch={*.js,src/**/*.js} --kill --cmd='npm start' --fmt='server S{#[bg=green]ON,#[bg=red]OFF,#[bg=red]ERR}'"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +27,8 @@
     ]
   },
   "dependencies": {
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "redux": "^3.5.2",
+    "socket.io": "^1.4.6"
   }
 }
